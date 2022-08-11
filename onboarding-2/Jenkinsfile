@@ -19,12 +19,12 @@ pipeline {
         }
 	stage('Exercise 1') {
 	    steps {
-		sh('../dojo-2/exercise1.sh')
+		sh('dojo-2/exercise1.sh')
 	    }
 	}
 	stage('Exercise 2') {
 	    steps {
-		sh('../dojo-2/exercise2.sh')
+		sh('dojo-2/exercise2.sh')
 	    }
 	}
     }
