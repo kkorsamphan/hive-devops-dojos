@@ -1,3 +1,3 @@
 #!/bin/bash
 
-grep -o devops example.txt | wc -l
+grep -o devops ../dojo-2/example.txt | wc -l
