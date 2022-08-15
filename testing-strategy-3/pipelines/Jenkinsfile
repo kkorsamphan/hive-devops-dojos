@@ -6,6 +6,7 @@ pipeline {
     environment {
         PROJECT_PATH="${env.JENKINS_HOME}/workspace/onboarding_3/testing-strategy-3"
         WEB_PATH="${PROJECT_PATH}/web"
+        WEB_E2E_PATH="${PROJECT_PATH}/e2e-web"
         SCRIPTS_PATH="${PROJECT_PATH}/scripts"
         DEV="dev"
         ALPHA="alpha"
@@ -27,9 +28,18 @@ pipeline {
         }
         stage('Test environment DEV') {
             steps {
-                dir("${SCRIPTS_PATH}") {
+                dir("${WEB_E2E_PATH}") {
                    sh """
                     echo "Test"
+                    npm i
+                    npm run test
+                    """
+                }
+            }
+            post {
+                alway {
+                    sh """
+                    lsof -ti :3000 | xargs kill &
                     """
                 }
             }
